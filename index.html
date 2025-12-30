@@ -54,6 +54,7 @@ main{
   padding:25px;
   box-shadow:0 10px 25px rgba(0,0,0,.4);
   text-align:center;
+  margin-bottom:20px;
 }
 
 .citation-text{
@@ -106,6 +107,32 @@ nav a span{
   display:block;
   font-size:18px;
 }
+
+/* BIBLIOTHÈQUE CARD */
+.book-card{
+  background:var(--card);
+  border-radius:15px;
+  padding:15px;
+  margin-bottom:15px;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.book-card:hover{
+  transform:scale(1.02);
+}
+
+.book-title{
+  font-size:16px;
+  font-weight:bold;
+  color:var(--primary);
+}
+
+.book-subtitle{
+  font-size:13px;
+  color:var(--muted);
+}
 </style>
 </head>
 
@@ -113,66 +140,79 @@ nav a span{
 
 <header>
   <h1>TEMPLE DE LA SAGESSE</h1>
-  <p>Chemin de lumière et d’enseignement</p>
+  <p>Méditation & Pensée</p>
 </header>
 
 <main>
+  <!-- CITATION -->
   <div class="citation-card">
     <div id="citationText" class="citation-text"></div>
     <div id="citationAuthor" class="citation-author"></div>
     <button class="share-btn" onclick="shareCitation()">📤 Partager</button>
   </div>
+
+  <!-- BIBLIOTHÈQUE -->
+  <div class="book-card" onclick="location.href='vie-unique.html'">
+    <div class="book-title">La Vie : Pourquoi pas deux essais ?</div>
+    <div class="book-subtitle">Balzac Palata</div>
+  </div>
+
+  <div class="book-card" onclick="location.href='jericho.html'">
+    <div class="book-title">Le Dernier Tour de Jéricho</div>
+    <div class="book-subtitle">Balzac Palata</div>
+  </div>
+
 </main>
 
 <nav>
   <a href="index.html"><span>🏠</span>Accueil</a>
   <a href="livres.html"><span>📖</span>Livres</a>
-  <a href="#"><span>🧘</span>Méditer</a>
+  <a href="priere.html"><span>🙏</span>Prier</a>
 </nav>
 
 <script>
+// Citations (40 exemples)
 const citations = [
-  {text:"L’obéissance vaut mieux que les sacrifices.", author:"Balzac Palata"},
+  {text:"L’obéissance vaut mieux que les sacrifices.", author:"Bible"},
   {text:"Le présent est la seule chair du temps.", author:"Balzac Palata"},
   {text:"L’amour lucide n’est pas froid, il est ancré.", author:"Balzac Palata"},
   {text:"Le désert est l’usine où Dieu brûle la chair.", author:"Balzac Palata"},
   {text:"Une vie unique donne à chaque instant son poids éternel.", author:"Balzac Palata"},
-  {text:"La sagesse se nourrit de silence et d’écoute.", author:"Balzac Palata"},
-  {text:"Chaque souffle est un rappel de notre fragilité et de notre force.", author:"Balzac Palata"},
-  {text:"Le cœur qui pardonne s’élève au-dessus de ses blessures.", author:"Balzac Palata"},
-  {text:"Méditer, c’est habiter le présent avec douceur.", author:"Balzac Palata"},
-  {text:"Les épreuves sont des tremplins pour l’âme.", author:"Balzac Palata"},
-  {text:"La foi éclaire ce que l’esprit seul ne peut voir.", author:"Balzac Palata"},
-  {text:"Chaque acte d’amour est un pas vers l’infini.", author:"Balzac Palata"},
-  {text:"L’humilité ouvre la porte de la sagesse.", author:"Balzac Palata"},
-  {text:"Le silence enseigne plus que mille paroles.", author:"Balzac Palata"},
-  {text:"Se connaître soi-même est le début de toute transformation.", author:"Balzac Palata"},
-  {text:"Le pardon libère plus celui qui donne que celui qui reçoit.", author:"Balzac Palata"},
-  {text:"Chaque pensée positive est une lumière dans l’obscurité.", author:"Balzac Palata"},
-  {text:"L’âme trouve sa paix quand elle s’abandonne au divin.", author:"Balzac Palata"},
-  {text:"L’amour véritable se manifeste dans le service humble.", author:"Balzac Palata"},
-  {text:"La patience est la clé des chemins longs mais justes.", author:"Balzac Palata"},
-  {text:"Les blessures guérissent quand on les accueille sans résistance.", author:"Balzac Palata"},
-  {text:"Chaque matin est un cadeau à ouvrir avec gratitude.", author:"Balzac Palata"},
-  {text:"Les choix conscients façonnent notre destin.", author:"Balzac Palata"},
-  {text:"Le courage consiste à avancer même quand la peur parle.", author:"Balzac Palata"},
-  {text:"La lumière intérieure éclaire les ténèbres extérieures.", author:"Balzac Palata"},
-  {text:"Les mots ont le pouvoir de guérir ou de blesser.", author:"Balzac Palata"},
-  {text:"La simplicité révèle la grandeur de l’âme.", author:"Balzac Palata"},
-  {text:"Le temps est un maître silencieux qui nous façonne.", author:"Balzac Palata"},
-  {text:"L’espérance transforme les nuits en aubes.", author:"Balzac Palata"},
-  {text:"Le cœur ouvert attire la paix et la joie.", author:"Balzac Palata"},
-  {text:"La gratitude est le souffle de l’âme heureuse.", author:"Balzac Palata"},
-  {text:"Se libérer du passé, c’est offrir un futur lumineux.", author:"Balzac Palata"},
-  {text:"Les petites victoires nourrissent la confiance en soi.", author:"Balzac Palata"},
-  {text:"La vérité s’impose avec douceur, jamais avec violence.", author:"Balzac Palata"},
-  {text:"Chaque instant de silence est un temple pour l’esprit.", author:"Balzac Palata"},
-  {text:"Les pensées justes conduisent à des actions justes.", author:"Balzac Palata"},
-  {text:"La méditation quotidienne est un retour à la maison intérieure.", author:"Balzac Palata"},
-  {text:"L’âme en paix rayonne sur tout ce qui l’entoure.", author:"Balzac Palata"},
-  {text:"La lumière de la foi dissipe les doutes.", author:"Balzac Palata"},
-  {text:"La bienveillance transforme le monde un geste à la fois.", author:"Balzac Palata"},
-  {text:"L’esprit qui se tait entend la voix de l’infini.", author:"Balzac Palata"}
+  {text:"La conscience est le lieu du choix véritable.", author:"Balzac Palata"},
+  {text:"Chaque instant contient une éternité de sens.", author:"Balzac Palata"},
+  {text:"Vivre autrement, c’est choisir la lumière dans l’obscurité.", author:"Balzac Palata"},
+  {text:"L’homme est jeté dans la vie, mais peut en faire un poème.", author:"Balzac Palata"},
+  {text:"Le regret est la mémoire du cœur.", author:"Balzac Palata"},
+  {text:"Transmettre, c’est semer des graines dans le cœur des autres.", author:"Balzac Palata"},
+  {text:"L’éternité commence dans l’instant habité.", author:"Balzac Palata"},
+  {text:"Aimer avec lucidité, c’est honorer l’autre sans se trahir.", author:"Balzac Palata"},
+  {text:"Agir avec intégrité, c’est suivre la voix de son âme.", author:"Balzac Palata"},
+  {text:"Un seul souffle peut contenir mille décisions.", author:"Balzac Palata"},
+  {text:"Le silence est un allié du cœur éveillé.", author:"Balzac Palata"},
+  {text:"Chaque choix est une pierre dans l’édifice de sa vie.", author:"Balzac Palata"},
+  {text:"La vie est un essai que l’on ne peut répéter.", author:"Balzac Palata"},
+  {text:"Réparer le fil rompu, c’est revenir vers soi.", author:"Balzac Palata"},
+  {text:"Vivre pleinement, c’est accepter l’irréversible.", author:"Balzac Palata"},
+  {text:"Le bonheur se cueille dans le présent, pas dans le passé.", author:"Balzac Palata"},
+  {text:"Le poète vit dans la conscience du passage.", author:"Balzac Palata"},
+  {text:"La grâce se manifeste dans l’instant présent.", author:"Balzac Palata"},
+  {text:"Chaque regret peut devenir un enseignement.", author:"Balzac Palata"},
+  {text:"L’amour est une offrande, non un besoin.", author:"Balzac Palata"},
+  {text:"L’intégrité se mesure dans le secret.", author:"Balzac Palata"},
+  {text:"La vie unique est le plus grand des dons.", author:"Balzac Palata"},
+  {text:"Le courage se renouvelle chaque matin.", author:"Balzac Palata"},
+  {text:"Choisir, c’est activer la pleine conscience.", author:"Balzac Palata"},
+  {text:"Le présent est un cadeau, non une répétition.", author:"Balzac Palata"},
+  {text:"Chaque jour est un acte de présence.", author:"Balzac Palata"},
+  {text:"Vivre avec mémoire, avec audace, avec foi.", author:"Balzac Palata"},
+  {text:"L’éveil commence là où le regret se termine.", author:"Balzac Palata"},
+  {text:"L’homme est un roseau pensant, conscient de sa finitude.", author:"inc"},
+  {text:"L’intensité vaut mieux que la longueur.", author:"Balzac Palata"},
+  {text:"L’écriture sauve ce que le temps emporte.", author:"Balzac Palata"},
+  {text:"La lucidité est le sel de la vie.", author:"Balzac Palata"},
+  {text:"Chaque instant est une prière silencieuse.", author:"Balzac Palata"},
+  {text:"La sagesse se cueille dans l’instant.", author:"Balzac Palata"},
+  {text:"Vivre pleinement est un art à pratiquer chaque jour.", author:"Balzac Palata"}
 ];
 
 let index = 0;
@@ -184,16 +224,14 @@ function afficherCitation(){
 }
 
 function shareCitation(){
-  const citation = citations[(index - 1 + citations.length) % citations.length];
-  const texte = citation.text + " — " + citation.author;
+  const text = citations[(index - 1 + citations.length) % citations.length].text;
   if(navigator.share){
     navigator.share({
       title:"Temple de la Sagesse",
-      text:texte,
-      url:window.location.href
+      text:text
     });
   } else {
-    alert("Copiez cette citation :\n\n" + texte);
+    alert("Copiez la citation :\n\n" + text);
   }
 }
 
