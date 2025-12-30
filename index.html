@@ -1,232 +1,204 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Temple de la Sagesse</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Temple de la Sagesse</title>
 
-  <style>
-    :root {
-      --primary: #0f1c3f;
-      --accent: #d4af37;
-      --bg: #fdfdfd;
-      --text: #222;
-      --radius: 14px;
-      --shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
+<style>
+:root{
+  --bg:#0b0d12;
+  --card:#151823;
+  --primary:#d4af37;
+  --text:#f1f1f1;
+  --muted:#9ca3af;
+}
 
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+body{
+  margin:0;
+  font-family: Georgia, serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-    header {
-      background: var(--primary);
-      color: #fff;
-      text-align: center;
-      padding: 25px;
-    }
+/* HEADER */
+header{
+  text-align:center;
+  padding:20px;
+  border-bottom:1px solid #222;
+}
 
-    header img {
-      height: 100px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-    }
+header h1{
+  margin:0;
+  font-size:20px;
+  letter-spacing:2px;
+  color:var(--primary);
+}
 
-    .verse-card {
-      background: #fff;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 20px;
-      margin: 20px;
-      text-align: center;
-    }
+header p{
+  margin-top:5px;
+  font-size:12px;
+  color:var(--muted);
+}
 
-    .verse-card strong {
-      color: var(--accent);
-    }
+/* MAIN */
+main{
+  padding:20px;
+  padding-bottom:90px;
+}
 
-    .actions {
-      display: flex;
-      justify-content: space-around;
-      margin: 20px;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+/* CITATION CARD */
+.citation-card{
+  background:var(--card);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+  text-align:center;
+}
 
-    .btn {
-      flex: 1;
-      min-width: 120px;
-      padding: 12px;
-      border-radius: 25px;
-      background: var(--accent);
-      color: #fff;
-      text-align: center;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      transition: background 0.3s, transform 0.2s;
-    }
+.citation-text{
+  font-size:18px;
+  line-height:1.6;
+}
 
-    .btn:hover {
-      background: #b9972f;
-      transform: scale(1.05);
-    }
+.citation-author{
+  margin-top:15px;
+  font-size:14px;
+  color:var(--primary);
+}
 
-    section {
-      padding: 20px;
-    }
+.share-btn{
+  margin-top:20px;
+  padding:10px 25px;
+  border-radius:25px;
+  border:1px solid var(--primary);
+  background:transparent;
+  color:var(--primary);
+  cursor:pointer;
+  font-weight:bold;
+}
 
-    section h2 {
-      color: var(--primary);
-      margin-bottom: 15px;
-      font-size: 22px;
-      border-left: 5px solid var(--accent);
-      padding-left: 10px;
-    }
+.share-btn:hover{
+  background:var(--primary);
+  color:#000;
+}
 
-    .card {
-      background: #fff;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 20px;
-      margin-bottom: 20px;
-    }
+/* NAV BAR */
+nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#0e1018;
+  border-top:1px solid #222;
+  display:flex;
+  justify-content:space-around;
+  padding:12px 0;
+}
 
-    .card h3 {
-      color: var(--accent);
-    }
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:12px;
+  text-align:center;
+}
 
-    .fulltext {
-      display: none;
-      margin-top: 15px;
-      background: #fff8e1;
-      padding: 15px;
-      border-radius: 12px;
-    }
-
-    .citation-box {
-      background: #fff;
-      border-left: 5px solid var(--accent);
-      padding: 15px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      font-style: italic;
-      margin-bottom: 15px;
-    }
-
-    .citation-box .author {
-      text-align: right;
-      font-weight: bold;
-      margin-top: 8px;
-      color: var(--primary);
-    }
-
-    .share-btn {
-      margin-top: 10px;
-      padding: 8px 14px;
-      border-radius: 20px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .share-btn:hover {
-      background: #b9972f;
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: var(--primary);
-      color: #cfe4f5;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-  </style>
+nav a span{
+  display:block;
+  font-size:18px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <img src="assets/logo.jpeg" alt="Temple de la Sagesse Logo">
   <h1>TEMPLE DE LA SAGESSE</h1>
-  <p>Chemin de Lumière et d'Enseignement</p>
+  <p>Chemin de lumière et d’enseignement</p>
 </header>
 
-<div class="verse-card">
-  <p>« Heureux l’homme qui supporte patiemment la tentation; car, après avoir été éprouvé, il recevra la couronne de vie. »</p>
-  <strong>Jacques 1:12</strong>
-</div>
-
-<div class="actions">
-  <button class="btn">🙏 Prier</button>
-  <button class="btn">🪞 Réfléchir</button>
-  <button class="btn">🚀 Commencer</button>
-</div>
-
-<section id="citations">
-  <h2>Citations</h2>
-
-  <div class="citation-box">
-    « L'obéissance vaut mieux que les sacrifices. »
-    <div class="author">Balzac Palata</div>
-    <button class="share-btn" onclick="shareCitation('L’obéissance vaut mieux que les sacrifices.')">📤 Partager</button>
+<main>
+  <div class="citation-card">
+    <div id="citationText" class="citation-text"></div>
+    <div id="citationAuthor" class="citation-author"></div>
+    <button class="share-btn" onclick="shareCitation()">📤 Partager</button>
   </div>
+</main>
 
-  <div class="citation-box">
-    « Le présent est la seule chair du temps. »
-    <div class="author">Balzac Palata</div>
-    <button class="share-btn" onclick="shareCitation('Le présent est la seule chair du temps.')">📤 Partager</button>
-  </div>
-</section>
-
-<section id="articles">
-  <h2>Articles</h2>
-
-  <div class="card">
-    <h3>Le Dernier Tour de Jéricho</h3>
-    <p>Crise d’obéissance plutôt que de puissance.</p>
-    <button class="btn" onclick="toggleText('jerichoFull')">Lire davantage</button>
-    <div id="jerichoFull" class="fulltext">
-      <p>(Texte intégral ici)</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p><strong>WhatsApp :</strong> <a href="https://wa.me/243823450038">+243 82 345 0038</a></p>
-  <p><strong>Email :</strong> <a href="mailto:balzacpalata12@gmail.com">balzacpalata12@gmail.com</a></p>
-</section>
-
-<footer>
-  <p>&copy; 2025 Temple de la Sagesse</p>
-</footer>
+<nav>
+  <a href="index.html"><span>🏠</span>Accueil</a>
+  <a href="livres.html"><span>📖</span>Livres</a>
+  <a href="#"><span>🧘</span>Méditer</a>
+</nav>
 
 <script>
-function toggleText(id) {
-  const section = document.getElementById(id);
-  section.style.display = section.style.display === "block" ? "none" : "block";
+const citations = [
+  {text:"L’obéissance vaut mieux que les sacrifices.", author:"Balzac Palata"},
+  {text:"Le présent est la seule chair du temps.", author:"Balzac Palata"},
+  {text:"L’amour lucide n’est pas froid, il est ancré.", author:"Balzac Palata"},
+  {text:"Le désert est l’usine où Dieu brûle la chair.", author:"Balzac Palata"},
+  {text:"Une vie unique donne à chaque instant son poids éternel.", author:"Balzac Palata"},
+  {text:"La sagesse se nourrit de silence et d’écoute.", author:"Balzac Palata"},
+  {text:"Chaque souffle est un rappel de notre fragilité et de notre force.", author:"Balzac Palata"},
+  {text:"Le cœur qui pardonne s’élève au-dessus de ses blessures.", author:"Balzac Palata"},
+  {text:"Méditer, c’est habiter le présent avec douceur.", author:"Balzac Palata"},
+  {text:"Les épreuves sont des tremplins pour l’âme.", author:"Balzac Palata"},
+  {text:"La foi éclaire ce que l’esprit seul ne peut voir.", author:"Balzac Palata"},
+  {text:"Chaque acte d’amour est un pas vers l’infini.", author:"Balzac Palata"},
+  {text:"L’humilité ouvre la porte de la sagesse.", author:"Balzac Palata"},
+  {text:"Le silence enseigne plus que mille paroles.", author:"Balzac Palata"},
+  {text:"Se connaître soi-même est le début de toute transformation.", author:"Balzac Palata"},
+  {text:"Le pardon libère plus celui qui donne que celui qui reçoit.", author:"Balzac Palata"},
+  {text:"Chaque pensée positive est une lumière dans l’obscurité.", author:"Balzac Palata"},
+  {text:"L’âme trouve sa paix quand elle s’abandonne au divin.", author:"Balzac Palata"},
+  {text:"L’amour véritable se manifeste dans le service humble.", author:"Balzac Palata"},
+  {text:"La patience est la clé des chemins longs mais justes.", author:"Balzac Palata"},
+  {text:"Les blessures guérissent quand on les accueille sans résistance.", author:"Balzac Palata"},
+  {text:"Chaque matin est un cadeau à ouvrir avec gratitude.", author:"Balzac Palata"},
+  {text:"Les choix conscients façonnent notre destin.", author:"Balzac Palata"},
+  {text:"Le courage consiste à avancer même quand la peur parle.", author:"Balzac Palata"},
+  {text:"La lumière intérieure éclaire les ténèbres extérieures.", author:"Balzac Palata"},
+  {text:"Les mots ont le pouvoir de guérir ou de blesser.", author:"Balzac Palata"},
+  {text:"La simplicité révèle la grandeur de l’âme.", author:"Balzac Palata"},
+  {text:"Le temps est un maître silencieux qui nous façonne.", author:"Balzac Palata"},
+  {text:"L’espérance transforme les nuits en aubes.", author:"Balzac Palata"},
+  {text:"Le cœur ouvert attire la paix et la joie.", author:"Balzac Palata"},
+  {text:"La gratitude est le souffle de l’âme heureuse.", author:"Balzac Palata"},
+  {text:"Se libérer du passé, c’est offrir un futur lumineux.", author:"Balzac Palata"},
+  {text:"Les petites victoires nourrissent la confiance en soi.", author:"Balzac Palata"},
+  {text:"La vérité s’impose avec douceur, jamais avec violence.", author:"Balzac Palata"},
+  {text:"Chaque instant de silence est un temple pour l’esprit.", author:"Balzac Palata"},
+  {text:"Les pensées justes conduisent à des actions justes.", author:"Balzac Palata"},
+  {text:"La méditation quotidienne est un retour à la maison intérieure.", author:"Balzac Palata"},
+  {text:"L’âme en paix rayonne sur tout ce qui l’entoure.", author:"Balzac Palata"},
+  {text:"La lumière de la foi dissipe les doutes.", author:"Balzac Palata"},
+  {text:"La bienveillance transforme le monde un geste à la fois.", author:"Balzac Palata"},
+  {text:"L’esprit qui se tait entend la voix de l’infini.", author:"Balzac Palata"}
+];
+
+let index = 0;
+
+function afficherCitation(){
+  document.getElementById("citationText").textContent = "« " + citations[index].text + " »";
+  document.getElementById("citationAuthor").textContent = "— " + citations[index].author;
+  index = (index + 1) % citations.length;
 }
 
-function shareCitation(text) {
-  if (navigator.share) {
+function shareCitation(){
+  const citation = citations[(index - 1 + citations.length) % citations.length];
+  const texte = citation.text + " — " + citation.author;
+  if(navigator.share){
     navigator.share({
-      title: 'Citation du Temple de la Sagesse',
-      text: text,
-      url: window.location.href
+      title:"Temple de la Sagesse",
+      text:texte,
+      url:window.location.href
     });
   } else {
-    alert("Copiez cette citation :\n\n" + text);
+    alert("Copiez cette citation :\n\n" + texte);
   }
 }
+
+afficherCitation();
+setInterval(afficherCitation, 30000);
 </script>
 
 </body>
