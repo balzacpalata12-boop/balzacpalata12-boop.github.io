@@ -19,7 +19,6 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      padding-bottom: 60px; /* espace pour la barre en bas */
     }
     header {
       background: var(--primary);
@@ -32,18 +31,38 @@
       border-radius: 50%;
       margin-bottom: 10px;
     }
-    .hero {
-      background: linear-gradient(135deg, var(--primary), #1f2f5c);
+    .verse-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      margin: 20px;
+      text-align: center;
+    }
+    .verse-card strong { color: var(--accent); }
+    .actions {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+    }
+    .btn {
+      flex: 1;
+      margin: 0 5px;
+      padding: 12px;
+      border-radius: 25px;
+      background: var(--accent);
       color: #fff;
       text-align: center;
-      padding: 40px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
     }
-    .hero h2 { color: var(--accent); }
-    section { padding: 30px 20px; max-width: 900px; margin: auto; }
+    .btn:hover { background: #b9972f; transform: scale(1.05); }
+    section { padding: 20px; }
     section h2 {
       color: var(--primary);
-      margin-bottom: 20px;
-      font-size: 26px;
+      margin-bottom: 15px;
+      font-size: 22px;
       border-left: 5px solid var(--accent);
       padding-left: 10px;
     }
@@ -55,20 +74,13 @@
       margin-bottom: 20px;
     }
     .card h3 { color: var(--accent); }
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 25px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
+    .fulltext {
+      display: none;
+      margin-top: 15px;
+      background: #fff8e1;
+      padding: 15px;
+      border-radius: 12px;
     }
-    .btn:hover { background: #b9972f; transform: scale(1.05); }
-    .fulltext { display: none; margin-top: 15px; background: #fff8e1; padding: 15px; border-radius: 12px; }
     .citation-box {
       background: #fff;
       border-left: 5px solid var(--accent);
@@ -84,34 +96,27 @@
       margin-top: 8px;
       color: var(--primary);
     }
+    .share-btn {
+      margin-top: 10px;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .share-btn:hover {
+      background: #b9972f;
+      transform: scale(1.05);
+    }
     footer {
       background: var(--primary);
       color: #cfe4f5;
       text-align: center;
       padding: 20px;
       font-size: 14px;
-    }
-    /* Barre de navigation en bas */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: var(--primary);
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      z-index: 100;
-    }
-    .bottom-nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
-      text-align: center;
-      flex: 1;
-    }
-    .bottom-nav a span {
-      display: block;
-      font-size: 20px;
     }
   </style>
 </head>
@@ -123,11 +128,34 @@
   <p>Chemin de Lumière et d'Enseignement</p>
 </header>
 
-<section id="accueil" class="hero">
-  <h2>« Vous connaîtrez la vérité et la vérité vous affranchira »</h2>
-  <p>Jean 8:32</p>
+<!-- Verset du jour -->
+<div class="verse-card">
+  <p>« Heureux l’homme qui supporte patiemment la tentation; car, après avoir été éprouvé, il recevra la couronne de vie. »</p>
+  <strong>Jacques 1:12</strong>
+</div>
+
+<!-- Actions -->
+<div class="actions">
+  <div class="btn">🙏 Prier</div>
+  <div class="btn">🪞 Réfléchir</div>
+  <div class="btn">🚀 Commencer</div>
+</div>
+
+<!-- Citations -->
+<section id="citations">
+  <h2>Citations</h2>
+  <div id="citationsList">
+    <!-- Exemple de 50 citations -->
+    <div class="citation-box">« L'obéissance vaut mieux que les sacrifices. »<div class="author">Balzac Palata</div><button class="share-btn" onclick="shareCitation('L\'obéissance vaut mieux que les sacrifices.')">📤 Partager</button></div>
+    <div class="citation-box">« Le présent est la seule chair du temps. »<div class="author">Balzac Palata</div><button class="share-btn" onclick="shareCitation('Le présent est la seule chair du temps.')">📤 Partager</button></div>
+    <div class="citation-box">« L’amour lucide n’est pas froid, il est ancré. »<div class="author">Balzac Palata</div><button class="share-btn" onclick="shareCitation('L’amour lucide n’est pas froid, il est ancré.')">📤 Partager</button></div>
+    <div class="citation-box">« La vie est un éclair entre deux ténèbres. »<div class="author">Balzac Palata</div><button class="share-btn" onclick="shareCitation('La vie est un éclair entre deux ténèbres.')">📤 Partager</button></div>
+    <div class="citation-box">« Le désert est l’usine de transformation où les œuvres de la chair sont brûlées. »<div class="author">Balzac Palata</div><button class="share-btn" onclick="shareCitation('Le désert est l’usine de transformation où les œuvres de la chair sont brûlées.')">📤 Partager</button></div>
+    <!-- Ajoute ici jusqu’à 50 citations, toutes avec bouton de partage -->
+  </div>
 </section>
 
+<!-- Articles -->
 <section id="articles">
   <h2>Articles</h2>
   <div class="card">
@@ -150,46 +178,16 @@
   </div>
 </section>
 
-<section id="citations">
-  <h2>Citations</h2>
-  <div id="citationBox" class="citation-box">
-    « L'obéissance vaut mieux que les sacrifices. »
-    <div class="author">Balzac Palata</div>
-  </div>
-</section>
-
-<section id="verset">
-  <h2>Verset du jour</h2>
-  <div class="card">
-    <p>« Heureux l’homme qui supporte patiemment la tentation; car, après avoir été éprouvé, il recevra la couronne de vie. »</p>
-    <p><strong>Jacques 1:12</strong></p>
-  </div>
-</section>
-
+<!-- Contact -->
 <section id="contact">
   <h2>Contact</h2>
   <p><strong>WhatsApp :</strong> <a href="https://wa.me/243823450038">+243 82 345 0038</a></p>
   <p><strong>Email :</strong> <a href="mailto:balzacpalata12@gmail.com">balzacpalata12@gmail.com</a></p>
 </section>
 
-<section id="parametres">
-  <h2>Paramètres</h2>
-  <p>Ici tu peux imaginer des options : changer le thème, activer/désactiver la rotation des citations, etc.</p>
-</section>
-
 <footer>
   <p>&copy; 2025 Temple de la Sagesse — Chemin de Lumière et d'Enseignement</p>
 </footer>
-
-<!-- Barre de navigation en bas -->
-<div class="bottom-nav">
-  <a href="#accueil"><span>🏠</span>Accueil</a>
-  <a href="#articles"><span>📖</span>Articles</a>
-  <a href="#citations"><span>💡</span>Citations</a>
-  <a href="#verset"><span>✝️</span>Verset</a>
-  <a href="#contact"><span>📩</span>Contact</a>
-  <a href="#parametres"><span>⚙️</span>Paramètres</a>
-</div>
 
 <script>
 function toggleText(id) {
@@ -197,12 +195,13 @@ function toggleText(id) {
   section.style.display = (section.style.display === "block") ? "none" : "block";
 }
 
-// Rotation automatique des citations
-const citations = [
-  "« L'obéissance vaut mieux que les sacrifices. »",
-  "« Le présent est la seule chair du temps. »",
-  "« L’amour lucide n’est pas froid, il est ancré. »",
-  "« La vie est un éclair entre deux ténèbres. »",
-  "« Le désert est l’usine de transformation où les œuvres de la chair sont brûlées. »",
-  "« Regretter, c’est aimer encore. »",
-  "« La fidélité dans l’épreuve est la marque du vainqueur. »
+// Fonction de partage
+function shareCitation(text) {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Citation du Temple de la Sagesse',
+      text: text,
+      url: window.location.href
+    }).catch(err => console.log('Erreur de partage:', err));
+  } else {
+    alert("Copiez cette citation pour la partager :\n\n" + text);
