@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Vie : Pourquoi pas deux essais ?</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* PAGE SPÉCIFIQUE AU LIVRE */
+.book-header{
+  text-align:center;
+  padding:30px 20px 10px;
+  border-bottom:1px solid #222;
+}
+
+.book-header h1{
+  margin:0;
+  font-size:24px;
+  color:var(--primary);
+  letter-spacing:1px;
+}
+
+.book-header h2{
+  margin:5px 0 0;
+  font-size:16px;
+  color:var(--muted);
+  font-style:italic;
+}
+
+.chapter{
+  margin:30px 0;
+}
+
+.chapter-title{
+  font-size:20px;
+  color:var(--primary);
+  margin-bottom:15px;
+  text-align:center;
+}
+
+.chapter-text{
+  font-size:16px;
+  line-height:1.8;
+  text-align:justify;
+  margin-bottom:20px;
+}
+
+.share-btn{
+  display:block;
+  margin:25px auto;
+  padding:10px 25px;
+  border-radius:25px;
+  border:1px solid var(--primary);
+  background:transparent;
+  color:var(--primary);
+  cursor:pointer;
+  font-weight:bold;
+  text-align:center;
+  width:200px;
+}
+
+.share-btn:hover{
+  background:var(--primary);
+  color:#000;
+}
+
+/* NAVIGATION BASSE */
+nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#0e1018;
+  border-top:1px solid #222;
+  display:flex;
+  justify-content:space-around;
+  padding:12px 0;
+}
+
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:12px;
+  text-align:center;
+}
+
+nav a span{
+  display:block;
+  font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="book-header">
+  <h1>La Vie : Pourquoi pas deux essais ?</h1>
+  <h2>Balzac Palata</h2>
+</header>
+
+<main>
+  <!-- Page de garde / Introduction -->
+  <div class="chapter">
+    <div class="chapter-title">Page de garde</div>
+    <div class="chapter-text">
+      Bienvenue dans "La Vie : Pourquoi pas deux essais ?". Ce livre est un voyage au cœur de l’unicité de l’existence. Il explore le sens de nos choix, l’importance de chaque instant et le miracle d’une seule vie vécue pleinement.
+    </div>
+    <button class="share-btn" onclick="shareBook()">📤 Partager le livre</button>
+  </div>
+
+  <!-- Chapitre I -->
+  <div class="chapter">
+    <div class="chapter-title">CHAPITRE I – UNE SEULE VIE : SCANDALE OU GÉNIE ?</div>
+    <div class="chapter-text">
+      « On ne vit qu’une fois. Mais si on le fait bien, une seule fois suffit. » – Mae West<br>
+      « Vivez comme si vous deviez mourir demain. Apprenez comme si vous deviez vivre toujours. » – Gandhi
+    </div>
+    <div class="chapter-text">
+      La vie nous arrive comme un torrent : brutale, imprévisible, sans mode d’emploi...
+      <!-- Tu peux copier le texte du chapitre I complet ici -->
+    </div>
+  </div>
+
+  <!-- Chapitre II -->
+  <div class="chapter">
+    <div class="chapter-title">CHAPITRE II – L’HOMME, POETE MALGRE LUI</div>
+    <div class="chapter-text">
+      Tout, dans l’existence humaine, est marqué par le passage. Les saisons, les jours, les corps, les sentiments...
+      <!-- Texte complet du chapitre II -->
+    </div>
+  </div>
+
+  <!-- Chapitres suivants -->
+  <div class="chapter">
+    <div class="chapter-title">CHAPITRE III – LE REGRET : PREUVE D’UN CŒUR EVEILLE</div>
+    <div class="chapter-text">
+      Ce que nous appelons regret n’est souvent que le réveil tardif du cœur...
+      <!-- Texte complet du chapitre III -->
+    </div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-title">CHAPITRE IV – VIVRE AUTREMENT : CHOISIR, AIMER, AGIR</div>
+    <div class="chapter-text">
+      I. Réparer le fil rompu : une réconciliation avec soi...
+      II. Choisir en pleine conscience...
+      III. Aimer avec lucidité...
+      IV. Agir avec intégrité...
+      V. Transmettre...
+      VI. T’écrire, à toi...
+      VII. Conclusion générale...
+      <!-- Texte complet du chapitre IV et suite -->
+    </div>
+  </div>
+
+</main>
+
+<nav>
+  <a href="index.html"><span>🏠</span>Accueil</a>
+  <a href="#"><span>📖</span>Livres</a>
+  <a href="#"><span>🪞</span>Réfléchir</a>
+</nav>
+
+<script>
+function shareBook(){
+  const text = "Découvrez le livre 'La Vie : Pourquoi pas deux essais ?' de Balzac Palata.";
+  if(navigator.share){
+    navigator.share({
+      title:"La Vie : Pourquoi pas deux essais ?",
+      text:text
+    });
+  } else {
+    alert("Copiez le texte pour partager :\n\n" + text);
+  }
+}
+</script>
+
+</body>
+  </html>
