@@ -1,83 +1,119 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Temple de la Sagesse</title>
-  <meta name="description" content="Chemin de Lumière et d'Enseignement — Partage de la Parole et réflexions bibliques." />
   <style>
+    :root {
+      --primary: #0f1c3f;   /* Bleu marine */
+      --accent: #d4af37;    /* Or */
+      --bg: #fdfdfd;
+      --text: #222;
+      --radius: 12px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
     body {
       font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
-      background: #fdfdfd;
-      color: #222;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
     header {
-      background: #0f4c81;
+      background: var(--primary);
       color: #fff;
-      padding: 20px;
       text-align: center;
+      padding: 30px 20px;
     }
     header img {
-      height: 80px;
+      height: 120px;
+      border-radius: 50%; /* logo arrondi */
+      display: block;
+      margin: 0 auto 10px;
     }
     nav {
-      background: #184b6b;
+      background: #13244d;
       display: flex;
       justify-content: center;
-      gap: 20px;
-      padding: 10px;
+      gap: 25px;
+      padding: 12px;
     }
     nav a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent);
     }
     .hero {
-      padding: 60px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #0f4c81, #184b6b);
+      background: linear-gradient(135deg, var(--primary), #1f2f5c);
       color: #fff;
+      text-align: center;
+      padding: 70px 20px;
     }
-    .hero h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 18px;
-      margin-top: 0;
+    .hero h2 {
+      color: var(--accent);
+      font-size: 32px;
     }
     section {
-      padding: 40px 20px;
-      max-width: 900px;
+      padding: 50px 20px;
+      max-width: 1000px;
       margin: auto;
     }
     section h2 {
-      color: #0f4c81;
+      color: var(--primary);
       margin-bottom: 20px;
+      font-size: 26px;
+      border-left: 5px solid var(--accent);
+      padding-left: 10px;
     }
     .card {
       background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
+      border: 1px solid #eee;
+      border-radius: var(--radius);
       padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 25px;
+      box-shadow: var(--shadow);
     }
-    footer {
-      background: #0d2f44;
-      color: #cfe4f5;
-      text-align: center;
-      padding: 20px;
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
     }
-    .contact a {
+    .btn {
       display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      border-radius: 8px;
-      background: #0f4c81;
+      padding: 12px 22px;
+      border-radius: var(--radius);
+      background: var(--accent);
       color: #fff;
       text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn:hover {
+      background: #b9972f;
+      transform: scale(1.05);
+    }
+    .citations {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+    .citation {
+      background: #fff;
+      border-left: 5px solid var(--accent);
+      padding: 15px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      font-style: italic;
+    }
+    footer {
+      background: var(--primary);
+      color: #cfe4f5;
+      text-align: center;
+      padding: 25px;
     }
   </style>
 </head>
@@ -85,7 +121,7 @@
 
   <!-- Header -->
   <header>
-    <img src="assets/logo.png" alt="Temple de la Sagesse Logo" />
+    <img src="assets/logo.jpeg" alt="Temple de la Sagesse Logo">
     <h1>TEMPLE DE LA SAGESSE</h1>
     <p>Chemin de Lumière et d'Enseignement</p>
   </header>
@@ -94,14 +130,14 @@
   <nav>
     <a href="#accueil">Accueil</a>
     <a href="#articles">Articles</a>
-    <a href="#meditations">Méditations</a>
+    <a href="#citations">Citations</a>
     <a href="#apropos">À propos</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <!-- Hero -->
-  <section class="hero" id="accueil">
-    <h1>« Vous connaîtrez la vérité et la vérité vous affranchira »</h1>
+  <section id="accueil" class="hero">
+    <h2>« Vous connaîtrez la vérité et la vérité vous affranchira »</h2>
     <p>Jean 8:32</p>
     <p>Un espace pour explorer les sujets bibliques complexes avec clarté et profondeur.</p>
   </section>
@@ -109,48 +145,56 @@
   <!-- Articles -->
   <section id="articles">
     <h2>Articles</h2>
+
     <div class="card">
-      <h3>Lire la Bible avec discernement</h3>
-      <p>Approches pratiques pour comprendre les textes difficiles et les appliquer à la vie quotidienne.</p>
+      <h3>Le Dernier Tour de Jéricho</h3>
+      <p><strong>Auteur :</strong> Frère Balzac Palata</p>
+      <p>Synthèse : Ce manuscrit expose la crise spirituelle de notre temps : non pas une crise de puissance, mais une crise d'obéissance. Il révèle que la logique humaine est l’ennemi mortel de l’obéissance totale.</p>
+      <a href="documents/Le-Dernier-Tour-de-Jericho.pdf" class="btn">Lire davantage</a>
     </div>
+
+    <div class="card">
+      <h3>La Vie : Pourquoi pas deux essais ?</h3>
+      <p><strong>Auteur :</strong> Balzac Palata</p>
+      <p>Synthèse : Ce livre explore la tension entre le scandale d’une vie unique et le génie de son intensité. Il invite à vivre chaque instant comme une éternité.</p>
+      <a href="documents/LA-VIE-COMPLET.pdf" class="btn">Lire davantage</a>
+    </div>
+
     <div class="card">
       <h3>Foi et raison</h3>
-      <p>Réflexions philosophiques et spirituelles sur l’équilibre entre intelligence et croyance.</p>
+      <p><strong>Auteur :</strong> Balzac Palata</p>
+      <p>Synthèse : Réflexions philosophiques et spirituelles sur l’équilibre entre intelligence et croyance.</p>
+      <a href="#" class="btn">Lire davantage</a>
     </div>
-  </section>
 
-  <!-- Méditations -->
-  <section id="meditations">
-    <h2>Méditations</h2>
     <div class="card">
       <h3>L’espérance au milieu des épreuves</h3>
-      <p>Comment rester ancré dans la Parole quand les défis semblent insurmontables.</p>
-    </div>
-    <div class="card">
-      <h3>La sagesse comme chemin</h3>
-      <p>Explorer la sagesse biblique comme lumière pour nos choix quotidiens.</p>
+      <p><strong>Auteur :</strong> Balzac Palata</p>
+      <p>Synthèse : Comment rester ancré dans la Parole quand les défis semblent insurmontables.</p>
+      <a href="#" class="btn">Lire davantage</a>
     </div>
   </section>
 
-  <!-- À propos -->
-  <section id="apropos">
-    <h2>À propos</h2>
-    <p>Le Temple de la Sagesse est une initiative personnelle dédiée au partage de la Parole de Dieu et à l’exploration des sujets bibliques complexes. Ici, la vérité est étudiée, méditée et rendue accessible pour affranchir et éclairer.</p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="contact">
-      <a href="https://wa.me/243823450038">WhatsApp</a>
-      <a href="mailto:balzacpalata12@gmail.com">Email</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Temple de la Sagesse — Chemin de Lumière et d'Enseignement</p>
-  </footer>
-
-</body>
-</html>
+  <!-- Citations -->
+  <section id="citations">
+    <h2>Citations</h2>
+    <div class="citations">
+      <div class="citation">« L'obéissance vaut mieux que les sacrifices. » (1 Samuel 15:22)</div>
+      <div class="citation">« Vous connaîtrez la vérité et la vérité vous affranchira. » (Jean 8:32)</div>
+      <div class="citation">« La vie est unique, mais chaque instant peut contenir une éternité. »</div>
+      <div class="citation">« L’homme est un roseau pensant, mais il sait qu’il va mourir. » (Pascal)</div>
+      <div class="citation">« Le désert est l’usine de transformation où les œuvres de la chair sont brûlées. »</div>
+      <div class="citation">« Regretter, c’est aimer encore. »</div>
+      <div class="citation">« La sagesse est la lumière pour nos choix quotidiens. »</div>
+      <div class="citation">« L’obéissance intégrale est la clé de la victoire. »</div>
+      <div class="citation">« La vie n’est pas un brouillon, mais une œuvre unique. »</div>
+      <div class="citation">« Nommer, c’est sauver. La poésie est une nécessité ontologique. »</div>
+      <div class="citation">« Dieu cherche ceux qui portent les cicatrices du combat. »</div>
+      <div class="citation">« Le présent est la seule chair du temps. »</div>
+      <div class="citation">« L’amour lucide n’est pas froid, il est ancré. »</div>
+      <div class="citation">« Le désert n’est pas une punition, mais une école. »</div>
+      <div class="citation">« La vie est un éclair entre deux ténèbres. »</div>
+      <div class="citation">« L’homme est jeté dans une vie dont il n’a pas les clés. »</div>
+      <div class="citation">« Le regret est la mémoire du cœur. »</div>
+      <div class="citation">« La fidélité dans l’épreuve est la marque du vainqueur. »</div>
+      <div class="citation">« L’obéissance ne s’arrête pas au sixième jour. »</div>
