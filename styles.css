@@ -4,7 +4,6 @@
   --accent: #d4af37;    /* Or */
   --bg: #fdfdfd;
   --text: #222;
-  --muted: #555;
   --radius: 12px;
   --shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
@@ -26,8 +25,10 @@ header {
   padding: 30px 20px;
 }
 header img {
-  height: 90px;
-  margin-bottom: 10px;
+  height: 120px;
+  border-radius: 50%; /* logo arrondi */
+  display: block;
+  margin: 0 auto 10px;
 }
 header h1 {
   font-size: 32px;
@@ -65,10 +66,10 @@ nav a:hover {
   text-align: center;
   padding: 70px 20px;
 }
-.hero h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
+.hero h2 {
   color: var(--accent);
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 .hero p {
   font-size: 18px;
@@ -78,7 +79,7 @@ nav a:hover {
 /* Sections */
 section {
   padding: 50px 20px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 section h2 {
@@ -89,7 +90,7 @@ section h2 {
   padding-left: 10px;
 }
 
-/* Cards */
+/* Cards (Articles, Méditations) */
 .card {
   background: #fff;
   border: 1px solid #eee;
@@ -102,21 +103,39 @@ section h2 {
   color: var(--accent);
   margin-bottom: 10px;
 }
+.card p {
+  margin-bottom: 15px;
+}
 
-/* Contact */
-.contact a {
+/* Boutons */
+.btn {
   display: inline-block;
-  margin: 10px;
   padding: 12px 22px;
   border-radius: var(--radius);
   background: var(--accent);
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
-.contact a:hover {
+.btn:hover {
   background: #b9972f;
+  transform: scale(1.05);
+}
+
+/* Citations */
+.citations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+.citation {
+  background: #fff;
+  border-left: 5px solid var(--accent);
+  padding: 15px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-style: italic;
 }
 
 /* Footer */
@@ -126,4 +145,4 @@ footer {
   text-align: center;
   padding: 25px;
   font-size: 14px;
-}
+  }
