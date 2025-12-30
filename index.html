@@ -4,32 +4,38 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Réflexions — Parole & foi — Balzac Palata</title>
+
+  <!-- Fonts + meta description + favicon -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Réflexions chrétiennes par Balzac Palata — méditations, articles et ressources spirituelles.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Ton CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Header -->
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="#home">Réflexions — Parole & foi</a>
-      <nav class="nav">
-        <a href="#about">À propos</a>
-        <a href="#scripture">Parole</a>
-        <a href="#posts">Articles</a>
+      <a class="brand" href="#home">
+        <img src="assets/logo-temple.svg" alt="Temple de sagesse — Hekhal Ḥokhmāh" class="site-logo">
+      </a>
+
+      <button class="menu-btn" aria-label="Menu">☰</button>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#home">Accueil</a>
+        <a href="#articles">Articles</a>
+        <a href="#verse">Verset</a>
+        <a href="#" id="initiativeBtn">Initiative</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <section id="home" class="hero">
-    <div class="wrap hero-content">
-      <h1>Réflexions chrétiennes par Balzac Palata</h1>
-      <p class="lead">Méditations, pensées sur la Parole et réponses aux questions de la foi. Un espace de paix, d'écoute et d'espérance.</p>
-      <div class="hero-cta">
-        <a class="btn primary" href="#posts">Voir les articles</a>
-        <a class="btn outline" id="askBtn" href="#contact">Poser une question</a>
-      </div>
-    </div>
-  </section>
-
+  <!-- Main -->
   <main class="wrap container">
     <section id="about" class="card">
       <h2>À propos</h2>
@@ -127,26 +133,84 @@
     💬
   </a>
 
+  <!-- Modal Initiative -->
+  <div id="initiativeModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="initiativeTitle">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Fermer" data-close>&times;</button>
+      <div class="modal-content">
+        <div class="modal-photo">
+          <img src="assets/photo-initiative.jpg" alt="Balzac Palata" />
+        </div>
+        <div class="modal-text">
+          <h2 id="initiativeTitle">Balzac Palata</h2>
+          <p>Jeune chrétien consacré, interprète et ministre de l’Évangile... (ta bio complète ici)</p>
+          <div class="modal-actions">
+            <a class="btn primary" href="mailto:balzacpalata12@gmail.com">Me contacter</a>
+            <a class="btn outline" href="https://wa.me/243823450038" target="_blank">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
   <script>
-    // Email centralisé
-    const contactEmail = "balzacpalata12@gmail.com";
+    // S'assurer que le DOM est prêt
+    document.addEventListener('DOMContentLoaded', function () {
+      // Email centralisé
+      const contactEmail = "balzacpalata12@gmail.com";
 
-    // Set links (in case you want to update in one place)
-    document.getElementById('emailLink').href = `mailto:${contactEmail}?subject=Question%20depuis%20le%20site`;
-    document.getElementById('emailLink').textContent = contactEmail;
-    document.getElementById('footerEmail').href = `mailto:${contactEmail}`;
-    document.getElementById('footerEmail').textContent = contactEmail;
+      // Set links (en un seul endroit)
+      const emailLink = document.getElementById('emailLink');
+      const footerEmail = document.getElementById('footerEmail');
+      if (emailLink) {
+        emailLink.href = `mailto:${contactEmail}?subject=Question%20depuis%20le%20site`;
+        emailLink.textContent = contactEmail;
+      }
+      if (footerEmail) {
+        footerEmail.href = `mailto:${contactEmail}`;
+        footerEmail.textContent = contactEmail;
+      }
 
-    function openMail(e){
-      e.preventDefault();
-      const name = encodeURIComponent(document.getElementById('qname').value || "");
-      const msg = encodeURIComponent(document.getElementById('qmsg').value || "");
-      const subject = encodeURIComponent("Question depuis le site — " + (name || "anonyme"));
-      location.href = `mailto:${contactEmail}?subject=${subject}&body=${msg}`;
-    }
+      // Form submit -> mailto
+      window.openMail = function (e) {
+        e.preventDefault();
+        const name = encodeURIComponent(document.getElementById('qname').value || "");
+        const msg = encodeURIComponent(document.getElementById('qmsg').value || "");
+        const subject = encodeURIComponent("Question depuis le site — " + (name || "anonyme"));
+        location.href = `mailto:${contactEmail}?subject=${subject}&body=${msg}`;
+      };
 
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+      // Year
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Menu mobile toggle
+      document.querySelector('.menu-btn')?.addEventListener('click', function () {
+        document.querySelector('.nav')?.classList.toggle('open');
+      });
+
+      // Modal Initiative open/close
+      const openBtn = document.getElementById('initiativeBtn');
+      const modal = document.getElementById('initiativeModal');
+      const closeEls = modal ? modal.querySelectorAll('[data-close]') : [];
+      function openModal() {
+        if (!modal) return;
+        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        if (!modal) return;
+        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      if (openBtn) openBtn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
+      closeEls.forEach(function (el) { el.addEventListener('click', closeModal); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+    });
   </script>
 </body>
-                                          </html>
+  </html>
