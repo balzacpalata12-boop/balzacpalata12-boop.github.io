@@ -18,6 +18,8 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 60px; /* espace pour la barre en bas */
     }
     header {
       background: var(--primary);
@@ -30,30 +32,20 @@
       border-radius: 50%;
       margin-bottom: 10px;
     }
-    nav {
-      display: flex;
-      justify-content: space-around;
-      background: #13244d;
-      padding: 12px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-    }
     .hero {
       background: linear-gradient(135deg, var(--primary), #1f2f5c);
       color: #fff;
       text-align: center;
-      padding: 50px 20px;
+      padding: 40px 20px;
     }
     .hero h2 { color: var(--accent); }
     section { padding: 30px 20px; max-width: 900px; margin: auto; }
     section h2 {
       color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 26px;
       border-left: 5px solid var(--accent);
       padding-left: 10px;
-      margin-bottom: 20px;
     }
     .card {
       background: #fff;
@@ -76,26 +68,17 @@
       transition: background 0.3s, transform 0.2s;
     }
     .btn:hover { background: #b9972f; transform: scale(1.05); }
-    .fulltext {
-      display: none;
-      margin-top: 15px;
-      background: #fff8e1;
-      padding: 15px;
-      border-radius: 12px;
-      color: #333;
-      line-height: 1.6;
-    }
-    .citations { display: none; margin-top: 20px; }
-    .citation {
+    .fulltext { display: none; margin-top: 15px; background: #fff8e1; padding: 15px; border-radius: 12px; }
+    .citation-box {
       background: #fff;
       border-left: 5px solid var(--accent);
       padding: 15px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      margin-bottom: 15px;
       font-style: italic;
+      margin-bottom: 15px;
     }
-    .citation .author {
+    .citation-box .author {
       text-align: right;
       font-weight: bold;
       margin-top: 8px;
@@ -106,6 +89,29 @@
       color: #cfe4f5;
       text-align: center;
       padding: 20px;
+      font-size: 14px;
+    }
+    /* Barre de navigation en bas */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: var(--primary);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 100;
+    }
+    .bottom-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      text-align: center;
+      flex: 1;
+    }
+    .bottom-nav a span {
+      display: block;
+      font-size: 20px;
     }
   </style>
 </head>
@@ -117,14 +123,6 @@
   <p>Chemin de Lumière et d'Enseignement</p>
 </header>
 
-<nav>
-  <a href="#accueil">Accueil</a>
-  <a href="#articles">Articles</a>
-  <a href="#citations">Citations</a>
-  <a href="#apropos">À propos</a>
-  <a href="#contact">Contact</a>
-</nav>
-
 <section id="accueil" class="hero">
   <h2>« Vous connaîtrez la vérité et la vérité vous affranchira »</h2>
   <p>Jean 8:32</p>
@@ -132,110 +130,40 @@
 
 <section id="articles">
   <h2>Articles</h2>
-
-  <!-- Article Jéricho -->
   <div class="card">
     <h3>Le Dernier Tour de Jéricho</h3>
-    <p>Synthèse : Ce manuscrit expose la crise spirituelle de notre temps : non pas une crise de puissance, mais une crise d'obéissance.</p>
+    <p>Synthèse : Crise d’obéissance plutôt que de puissance. La logique humaine contre l’obéissance totale.</p>
     <button class="btn" onclick="toggleText('jerichoFull')">Lire davantage</button>
     <div id="jerichoFull" class="fulltext">
       <h4>Texte complet</h4>
-      <p>
-        (Insère ici le texte intégral de ton manuscrit “Le Dernier Tour de Jéricho” : Préface, Introduction, Chapitres, Conclusion, etc.)
-      </p>
+      <p>(Insère ici le texte intégral de ton manuscrit “Le Dernier Tour de Jéricho”)</p>
     </div>
   </div>
-
-  <!-- Article La Vie -->
   <div class="card">
     <h3>La Vie : Pourquoi pas deux essais ?</h3>
-    <p>Synthèse : Ce livre explore la tension entre le scandale d’une vie unique et le génie de son intensité.</p>
+    <p>Synthèse : Tension entre le scandale d’une vie unique et le génie de son intensité.</p>
     <button class="btn" onclick="toggleText('vieFull')">Lire davantage</button>
     <div id="vieFull" class="fulltext">
       <h4>Texte complet</h4>
-      <p>
-        (Insère ici le texte intégral de ton manuscrit “La Vie : Pourquoi pas deux essais ?” : Chapitres, Conclusion, etc.)
-      </p>
+      <p>(Insère ici le texte intégral de ton manuscrit “La Vie : Pourquoi pas deux essais ?”)</p>
     </div>
   </div>
 </section>
 
 <section id="citations">
   <h2>Citations</h2>
-  <button class="btn" onclick="toggleCitations()">Voir les citations</button>
-  <div class="citations" id="citationsList">
-    <!-- 50 citations -->
-    <div class="citation">« L'obéissance vaut mieux que les sacrifices. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Vous connaîtrez la vérité et la vérité vous affranchira. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le présent est la seule chair du temps. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’amour lucide n’est pas froid, il est ancré. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est un éclair entre deux ténèbres. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le désert est l’usine de transformation où les œuvres de la chair sont brûlées. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Regretter, c’est aimer encore. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La fidélité dans l’épreuve est la marque du vainqueur. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’obéissance ne s’arrête pas au sixième jour. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie n’est pas un brouillon, mais une œuvre unique. »<div class="author">Balzac Palata</div></div>
-    
-    <div class="citation">« L'obéissance vaut mieux que les sacrifices. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Vous connaîtrez la vérité et la vérité vous affranchira. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le présent est la seule chair du temps. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’amour lucide n’est pas froid, il est ancré. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est un éclair entre deux ténèbres. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le désert est l’usine de transformation où les œuvres de la chair sont brûlées. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Regretter, c’est aimer encore. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La fidélité dans l’épreuve est la marque du vainqueur. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’obéissance ne s’arrête pas au sixième jour. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie n’est pas un brouillon, mais une œuvre unique. »<div class="author">Balzac Palata</div></div>
-
-    <div class="citation">« Nommer, c’est sauver. La poésie est une nécessité ontologique. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Dieu cherche ceux qui portent les cicatrices du combat. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’homme est jeté dans une vie dont il n’a pas les clés. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le regret est la mémoire du cœur. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La sagesse est la lumière pour nos choix quotidiens. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est unique, mais chaque instant peut contenir une éternité. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’obéissance intégrale est la clé de la victoire. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La liberté de penser ne peut contredire l’autorité divine. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le désert n’est pas une punition, mais une école de transformation. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est courte, mais chaque seconde est une porte vers l’éternité. »<div class="author">Balzac Palata</div></div>
-
-    <div class="citation">« L’homme testé est celui qui porte les marques de la bataille. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le silence est parfois la plus grande des obéissances. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’obéissance partielle n’est pas l’obéissance, c’est la négociation. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La logique humaine est l’ennemi mortel de l’obéissance totale. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le dernier tour est celui où tout se joue. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie n’est pas injuste, elle est unique. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le regret transforme l’erreur en semence. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La conscience est le lieu du choix véritable. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’homme est poète malgré lui, car il habite le passage. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La fidélité à la Parole est la marque du disciple. »<div class="author">Balzac Palata</div></div>
-
-    <div class="citation">« L’obéissance vaut mieux que les sacrifices, même quand elle défie la logique. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est un essai unique, mais chaque instant peut être une renaissance. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le désert est l’usine où Dieu brûle nos zones de confort. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’homme est un voyageur, un passant, une poussière éternelle en mouvement. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le regret est une seconde chance déguisée. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est un pacte silencieux entre l’homme et Dieu. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’obéissance est une loi divine, pas une suggestion humaine. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La fidélité n’est pas vaine, elle porte toujours du fruit. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est un éclair, mais elle peut illuminer l’éternité. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le silence qui retient la muraille est brisé par l’obéissance. »<div class="author">Balzac Palata</div></div>
-
-    <div class="citation">« La vie n’est pas une répétition, mais une œuvre unique. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’homme est un roseau pensant, mais il sait qu’il va mourir. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le désert n’est pas un lieu de punition, mais de préparation. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est un éclair entre deux ténèbres, mais elle peut être lumineuse. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’obéissance totale est la clé de la chute des murailles. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est un essai unique, mais chaque instant peut contenir mille. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« Le regret est la preuve d’un cœur éveillé. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La fidélité dans le désert est la marque du vainqueur. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« L’obéissance défie la logique humaine, mais elle ouvre la porte divine. »<div class="author">Balzac Palata</div></div>
-    <div class="citation">« La vie est courte, mais elle mérite d’être vécue avec grandeur. »<div class="author">Balzac Palata</div></
+  <div id="citationBox" class="citation-box">
+    « L'obéissance vaut mieux que les sacrifices. »
+    <div class="author">Balzac Palata</div>
   </div>
 </section>
 
-<section id="apropos">
-  <h2>À propos</h2>
-  <p>Le Temple de la Sagesse est une initiative dédiée au partage de la Parole et à l’exploration des sujets bibliques complexes.</p>
+<section id="verset">
+  <h2>Verset du jour</h2>
+  <div class="card">
+    <p>« Heureux l’homme qui supporte patiemment la tentation; car, après avoir été éprouvé, il recevra la couronne de vie. »</p>
+    <p><strong>Jacques 1:12</strong></p>
+  </div>
 </section>
 
 <section id="contact">
@@ -244,6 +172,37 @@
   <p><strong>Email :</strong> <a href="mailto:balzacpalata12@gmail.com">balzacpalata12@gmail.com</a></p>
 </section>
 
+<section id="parametres">
+  <h2>Paramètres</h2>
+  <p>Ici tu peux imaginer des options : changer le thème, activer/désactiver la rotation des citations, etc.</p>
+</section>
+
 <footer>
   <p>&copy; 2025 Temple de la Sagesse — Chemin de Lumière et d'Enseignement</p>
-</footer
+</footer>
+
+<!-- Barre de navigation en bas -->
+<div class="bottom-nav">
+  <a href="#accueil"><span>🏠</span>Accueil</a>
+  <a href="#articles"><span>📖</span>Articles</a>
+  <a href="#citations"><span>💡</span>Citations</a>
+  <a href="#verset"><span>✝️</span>Verset</a>
+  <a href="#contact"><span>📩</span>Contact</a>
+  <a href="#parametres"><span>⚙️</span>Paramètres</a>
+</div>
+
+<script>
+function toggleText(id) {
+  const section = document.getElementById(id);
+  section.style.display = (section.style.display === "block") ? "none" : "block";
+}
+
+// Rotation automatique des citations
+const citations = [
+  "« L'obéissance vaut mieux que les sacrifices. »",
+  "« Le présent est la seule chair du temps. »",
+  "« L’amour lucide n’est pas froid, il est ancré. »",
+  "« La vie est un éclair entre deux ténèbres. »",
+  "« Le désert est l’usine de transformation où les œuvres de la chair sont brûlées. »",
+  "« Regretter, c’est aimer encore. »",
+  "« La fidélité dans l’épreuve est la marque du vainqueur. »
