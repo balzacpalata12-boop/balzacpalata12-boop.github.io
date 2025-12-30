@@ -1,1 +1,0 @@
-# balzacpalata12-boop.github.io

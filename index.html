@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Réflexions — Parole & foi — Balzac Palata</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#home">Réflexions — Parole & foi</a>
+      <nav class="nav">
+        <a href="#about">À propos</a>
+        <a href="#scripture">Parole</a>
+        <a href="#posts">Articles</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="wrap hero-content">
+      <h1>Réflexions chrétiennes par Balzac Palata</h1>
+      <p class="lead">Méditations, pensées sur la Parole et réponses aux questions de la foi. Un espace de paix, d'écoute et d'espérance.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#posts">Voir les articles</a>
+        <a class="btn outline" id="askBtn" href="#contact">Poser une question</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap container">
+    <section id="about" class="card">
+      <h2>À propos</h2>
+      <p>Je m'appelle Balzac Palata. Ici je partage des réflexions sur la Parole de Dieu, des méditations sur des sujets profonds, et je réponds aux questions quand c'est possible. Mon approche est simple : lecture attentive, prière et bienveillance.</p>
+    </section>
+
+    <section id="scripture" class="card">
+      <h2>Parole du jour</h2>
+      <blockquote>
+        « Ta parole est une lampe à mes pieds et une lumière sur mon sentier. » — Psaume 119:105
+      </blockquote>
+      <p class="muted">Petite réflexion : la Parole éclaire nos choix quotidiens. Reviens régulièrement pour une nouvelle méditation.</p>
+    </section>
+
+    <section id="posts" class="card">
+      <h2>Articles & Méditations</h2>
+      <div class="posts-grid">
+        <article class="post">
+          <h3>Lire la Bible avec le cœur</h3>
+          <p>Conseils pratiques pour approcher l'Écriture avec écoute et discernement.</p>
+          <a class="read-more" href="#">Lire</a>
+        </article>
+
+        <article class="post">
+          <h3>Méditation sur l'espérance</h3>
+          <p>Comment rester ancré dans l'espérance face aux épreuves.</p>
+          <a class="read-more" href="#">Lire</a>
+        </article>
+
+        <article class="post">
+          <h3>Questions de foi — réponses simples</h3>
+          <p>Des réponses brèves à des questions souvent posées.</p>
+          <a class="read-more" href="#">Lire</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact — Pose une question</h2>
+      <p>Tu peux m'écrire directement par e‑mail ou via WhatsApp. Je répondrai quand je le pourrai.</p>
+
+      <div class="contact-actions">
+        <div class="contact-item">
+          <h3>Email</h3>
+          <p><a id="emailLink" href="mailto:balzacpalata12@gmail.com?subject=Question%20depuis%20le%20site">balzacpalata12@gmail.com</a></p>
+        </div>
+
+        <div class="contact-item">
+          <h3>WhatsApp</h3>
+          <p><a class="whatsapp-btn" href="https://wa.me/243823450038" target="_blank" rel="noopener noreferrer">Écrire sur WhatsApp</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3>Envoyer une question rapide (ouvre votre messagerie)</h3>
+      <form id="quickContact" class="form-inline" onsubmit="openMail(event)">
+        <label for="qname">Ton nom</label>
+        <input id="qname" name="name" type="text" placeholder="Ton nom" required>
+
+        <label for="qmsg">Question</label>
+        <textarea id="qmsg" name="message" placeholder="Écris ta question..." rows="4" required></textarea>
+
+        <button class="btn primary" type="submit">Envoyer</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h4>Balzac Palata</h4>
+        <p class="muted">Réflexions — Parole & foi</p>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p>Email : <a id="footerEmail" href="mailto:balzacpalata12@gmail.com">balzacpalata12@gmail.com</a></p>
+        <p>WhatsApp : <a href="https://wa.me/243823450038" target="_blank" rel="noopener noreferrer">+243 82 345 0038</a></p>
+      </div>
+
+      <div>
+        <h4>Règles</h4>
+        <p class="muted">Respect et bienveillance dans les échanges. Les messages agressifs ne seront pas publiés.</p>
+      </div>
+    </div>
+
+    <div class="wrap copyright">
+      <p>© <span id="year"></span> Balzac Palata — Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp quick button -->
+  <a class="floating-whatsapp" href="https://wa.me/243823450038" target="_blank" rel="noopener noreferrer" title="Écrire sur WhatsApp">
+    💬
+  </a>
+
+  <script>
+    // Email centralisé
+    const contactEmail = "balzacpalata12@gmail.com";
+
+    // Set links (in case you want to update in one place)
+    document.getElementById('emailLink').href = `mailto:${contactEmail}?subject=Question%20depuis%20le%20site`;
+    document.getElementById('emailLink').textContent = contactEmail;
+    document.getElementById('footerEmail').href = `mailto:${contactEmail}`;
+    document.getElementById('footerEmail').textContent = contactEmail;
+
+    function openMail(e){
+      e.preventDefault();
+      const name = encodeURIComponent(document.getElementById('qname').value || "");
+      const msg = encodeURIComponent(document.getElementById('qmsg').value || "");
+      const subject = encodeURIComponent("Question depuis le site — " + (name || "anonyme"));
+      location.href = `mailto:${contactEmail}?subject=${subject}&body=${msg}`;
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+                                          </html>
