@@ -1,160 +1,101 @@
-/* Palette inspirée du logo */
-:root {
-  --primary: #0f1c3f;   /* Bleu marine profond */
-  --accent: #d4af37;    /* Or */
-  --bg: #fdfdfd;
-  --text: #222;
-  --radius: 14px;
-  --shadow: 0 4px 12px rgba(0,0,0,0.08);
+:root{
+  --bg:#0b0d12;
+  --card:#151823;
+  --primary:#d4af37;
+  --text:#f1f1f1;
+  --muted:#9ca3af;
 }
 
-/* Reset */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+body{
+  margin:0;
+  font-family: Georgia, serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
-/* Header */
-header {
-  background: var(--primary);
-  color: #fff;
-  text-align: center;
-  padding: 25px;
-}
-header img {
-  height: 100px;
-  border-radius: 50%; /* logo arrondi */
-  margin-bottom: 10px;
-}
-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-}
-header p {
-  font-style: italic;
-  color: var(--accent);
-  font-weight: 500;
+/* HEADER */
+header{
+  text-align:center;
+  padding:20px;
+  border-bottom:1px solid #222;
 }
 
-/* Verset du jour */
-.verse-card {
-  background: #fff;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 20px;
-  margin: 20px;
-  text-align: center;
-}
-.verse-card p {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-.verse-card strong {
-  color: var(--accent);
-  font-size: 16px;
+header h1{
+  margin:0;
+  font-size:20px;
+  letter-spacing:2px;
+  color:var(--primary);
 }
 
-/* Actions */
-.actions {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px;
-}
-.btn {
-  flex: 1;
-  margin: 0 5px;
-  padding: 12px;
-  border-radius: 25px;
-  background: var(--accent);
-  color: #fff;
-  text-align: center;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-.btn:hover { background: #b9972f; transform: scale(1.05); }
-
-/* Sections */
-section {
-  padding: 20px;
-}
-section h2 {
-  color: var(--primary);
-  margin-bottom: 15px;
-  font-size: 22px;
-  border-left: 5px solid var(--accent);
-  padding-left: 10px;
+header p{
+  margin-top:5px;
+  font-size:12px;
+  color:var(--muted);
 }
 
-/* Articles */
-.card {
-  background: #fff;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-.card h3 { color: var(--accent); }
-.fulltext {
-  display: none;
-  margin-top: 15px;
-  background: #fff8e1;
-  padding: 15px;
-  border-radius: 12px;
-  color: #333;
-  line-height: 1.6;
+/* MAIN */
+main{
+  padding:20px;
+  padding-bottom:90px;
 }
 
-/* Citations */
-.citation-box {
-  background: #fff;
-  border-left: 5px solid var(--accent);
-  padding: 15px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  font-style: italic;
-  margin-bottom: 15px;
-}
-.citation-box .author {
-  text-align: right;
-  font-weight: bold;
-  margin-top: 8px;
-  color: var(--primary);
+/* CITATION CARD */
+.citation-card{
+  background:var(--card);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
+  text-align:center;
 }
 
-/* Bouton de partage */
-.share-btn {
-  margin-top: 10px;
-  padding: 8px 14px;
-  border-radius: 20px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s, transform 0.2s;
-}
-.share-btn:hover {
-  background: #b9972f;
-  transform: scale(1.05);
+.citation-text{
+  font-size:18px;
+  line-height:1.6;
 }
 
-/* Footer */
-footer {
-  background: var(--primary);
-  color: #cfe4f5;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
+.citation-author{
+  margin-top:15px;
+  font-size:14px;
+  color:var(--primary);
 }
 
-/* Responsive mobile */
-@media (max-width: 768px) {
-  header h1 { font-size: 22px; }
-  .verse-card p { font-size: 16px; }
-  section h2 { font-size: 18px; }
-  .btn { width: 100%; text-align: center; margin: 5px 0; }
+/* BOUTON PARTAGER */
+.share-btn{
+  margin-top:20px;
+  padding:10px 25px;
+  border-radius:25px;
+  border:1px solid var(--primary);
+  background:transparent;
+  color:var(--primary);
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.share-btn:hover{
+  background:var(--primary);
+  color:#000;
+}
+
+/* NAV BAR */
+nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#0e1018;
+  border-top:1px solid #222;
+  display:flex;
+  justify-content:space-around;
+  padding:12px 0;
+}
+
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:12px;
+  text-align:center;
+}
+
+nav a span{
+  display:block;
+  font-size:18px;
 }
